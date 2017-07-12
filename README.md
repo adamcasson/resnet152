@@ -3,7 +3,7 @@ Adaptation of ResNet-152 to match Keras API with added large input option. Origi
 
 Compatible with both TensorFlow and Theano backends.
 
-##Examples
+## Examples
 
 This version is modified to work the same as the ResNet50 model currently available in `keras.applications`
 
