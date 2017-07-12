@@ -1,6 +1,10 @@
 # ResNet-152 for Keras
 Adaptation of ResNet-152 to match Keras API with added large input option. Original code from [flyyufelix](https://gist.github.com/flyyufelix/7e2eafb149f72f4d38dd661882c554a6), Keras 2.0 modified version of original code from [mvoelk](https://gist.github.com/mvoelk/ef4fc7fb905be7191cc2beb1421da37c).
 
+Weights are ported from Caffe by flyyufelix. Check out his [blog](https://flyyufelix.github.io/2017/03/23/caffe-to-keras.html) for more info. Weights for feature extraction are adapted version of these weights with the top layer not included.
+
+Weights can be found in the release section of this repo.
+
 Compatible with both TensorFlow and Theano backends.
 
 ## Examples
