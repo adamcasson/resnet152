@@ -30,12 +30,16 @@ from keras.utils import layer_utils
 from keras import initializers
 from keras.engine import Layer, InputSpec
 from keras.preprocessing import image
+from keras.utils.data_utils import get_file
 from keras.applications.imagenet_utils import decode_predictions
 from keras.applications.imagenet_utils import preprocess_input
 from keras.applications.imagenet_utils import _obtain_input_shape
 
 import sys
 sys.setrecursionlimit(3000)
+
+WEIGHTS_PATH = 'https://github.com/adamcasson/resnet152/releases/download/v0.1/resnet152_weights_tf.h5'
+WEIGHTS_PATH_NO_TOP = 'https://github.com/adamcasson/resnet152/releases/download/v0.1/resnet152_weights_tf_notop.h5'
 
 class Scale(Layer):
     '''Custom Layer for ResNet used for BatchNormalization.
@@ -248,7 +252,8 @@ def ResNet152(include_top=True, weights=None,
         img_size = 448
     else:
         img_size = 224
-        
+    
+    # Determine proper input shape
     input_shape = _obtain_input_shape(input_shape,
                                       default_size=img_size,
                                       min_size=197,
@@ -313,15 +318,21 @@ def ResNet152(include_top=True, weights=None,
         inputs = get_source_inputs(input_tensor)
     else:
         inputs = img_input
-
+    # Create model.
     model = Model(inputs, x, name='resnet152')
     
     # load weights
     if weights == 'imagenet':
         if include_top:
-            weights_path = 'resnet152_weights_tf.h5'
+            weights_path = get_file('resnet152_weights_tf.h5',
+                                    WEIGHTS_PATH,
+                                    cache_subdir='models',
+                                    md5_hash='cdb18a2158b88e392c0905d47dcef965')
         else:
-            weights_path = 'resnet152_weights_tf_notop.h5'
+            weights_path = get_file('resnet152_weights_tf_notop.h5',
+                                    WEIGHTS_PATH_NO_TOP,
+                                    cache_subdir='models',
+                                    md5_hash='4a90dcdafacbd17d772af1fb44fc2660')
         model.load_weights(weights_path, by_name=True)
         if K.backend() == 'theano':
             layer_utils.convert_all_kernels_in_model(model)

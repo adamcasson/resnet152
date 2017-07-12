@@ -3,9 +3,9 @@ Adaptation of ResNet-152 to match Keras API with added large input option. Origi
 
 Weights are ported from Caffe by flyyufelix. Check out his [blog](https://flyyufelix.github.io/2017/03/23/caffe-to-keras.html) for more info. Weights for feature extraction are adapted version of these weights with the top layer not included.
 
-Weights can be found in the release section of this repo.
+Weights can be found in the release section of this repo but the code is setup to download and cache the weights when the model is instantiated so there is no need to download them directly.
 
-Compatible with both TensorFlow and Theano backends.
+The weights are in TensorFlow format but the code is compatible with both TensorFlow and Theano backends and will convert weights into Theano format if needed.
 
 ## Examples
 
