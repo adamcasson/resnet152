@@ -52,7 +52,7 @@ features = model.predict(x)
 ```python
 from resnet152 import ResNet152
 from keras.preprocessing import image
-from keras.applications.imagenet_utils import preprocess input
+from keras.applications.imagenet_utils import preprocess_input
 from keras.models import Model
 
 base_model = ResNet152(weights='imagenet', large_input=True)
