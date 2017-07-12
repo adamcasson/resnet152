@@ -7,7 +7,7 @@ Compatible with both TensorFlow and Theano backends.
 
 This version is modified to work the same as the ResNet50 model currently available in `keras.applications`
 
-Examples as provided by [fchollet](https://github.com/fchollet/deep-learning-models) should are all compatible
+Examples as provided by [fchollet](https://github.com/fchollet/deep-learning-models) are compatible as shown below:
 
 ### Classify images
 
