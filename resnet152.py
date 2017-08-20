@@ -364,7 +364,6 @@ if __name__ == '__main__':
     img_path = 'elephant.jpg'
     img = image.load_img(img_path, target_size=(224,224))
     x = image.img_to_array(img)
-    x = x[:,:,::-1]
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     print('Input image shape:', x.shape)
