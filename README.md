@@ -25,6 +25,7 @@ model = ResNet152(weights='imagenet')
 img_path = 'elephant.jpg'
 img = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(img)
+x = x[:,:,::-1]
 x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
 
@@ -45,6 +46,7 @@ model = ResNet152(include_top=False, weights='imagenet')
 img_path = 'elephant.jpg'
 img = image.load_img(img_path, target_size=(224, 224))
 x = image.img_to_array(img)
+x = x[:,:,::-1]
 x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
     
@@ -65,6 +67,7 @@ model = Model(inputs=base_model.input, outputs=base_model.get_layer('res5c').out
 img_path = 'elephant.jpg'
 img = image.load_img(img_path, target_size=(448,448))
 x = image.img_to_array(img)
+x = x[:,:,::-1]
 x = np.expand_dims(x, axis=0)
 x = preprocess_input(x)
     
